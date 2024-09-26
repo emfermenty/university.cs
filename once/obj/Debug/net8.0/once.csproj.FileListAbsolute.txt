@@ -1,0 +1,14 @@
+C:\Users\demra\source\repos\once\bin\Debug\net8.0\once.exe
+C:\Users\demra\source\repos\once\bin\Debug\net8.0\once.deps.json
+C:\Users\demra\source\repos\once\bin\Debug\net8.0\once.runtimeconfig.json
+C:\Users\demra\source\repos\once\bin\Debug\net8.0\once.dll
+C:\Users\demra\source\repos\once\bin\Debug\net8.0\once.pdb
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.AssemblyInfoInputs.cache
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.AssemblyInfo.cs
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.csproj.CoreCompileInputs.cache
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.dll
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\refint\once.dll
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.pdb
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\once.genruntimeconfig.cache
+C:\Users\demra\source\repos\once\obj\Debug\net8.0\ref\once.dll
