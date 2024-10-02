@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Specialized;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -153,7 +153,7 @@ class Program{
                 }
                     Console.Write("Введите число, входящее в массив: ");
                     int ooo = int.Parse(Console.ReadLine());
-                    Console.WriteLine(program.findFirst(ref oo, ooo));
+                    Console.WriteLine(program.findFirst(oo, ooo));
                 break;
                 case 3:
                 Console.Write("Введите размер массива: ");
@@ -163,7 +163,7 @@ class Program{
                     Console.Write($"Введите {i} эллмент массива: ");
                     oooo[i] = int.Parse(Console.ReadLine());
                 }
-                    Console.WriteLine(program.maxAbs(ref oooo));
+                    Console.WriteLine(program.maxAbs(oooo));
                 break;
                 case 5:
                     Console.Write("Введите размер первого массива: ");
@@ -182,7 +182,7 @@ class Program{
                     }
                     Console.Write("Введите индекс после которого осуществляется вставка: ");
                     int rez = int.Parse(Console.ReadLine());
-                    int[] otv = program.add(ref ooooo, ref oooooo, rez);
+                    int[] otv = program.add(ooooo, oooooo, rez);
                     for(int i = 0; i < otv.Length; i++){
                         Console.Write(otv[i] + " ");
                     }
@@ -195,7 +195,7 @@ class Program{
                     Console.Write($"Введите {i} эллмент массива: ");
                     oa[i] = int.Parse(Console.ReadLine());
                 }
-                int[] ao = program.reverseBack(ref oa);
+                int[] ao = program.reverseBack(oa);
                 for(int i = 0; i < oa.Length; i++){
                     Console.Write(ao[i] + " ");
                 }
@@ -210,7 +210,7 @@ class Program{
                 }
                     Console.Write("Введите x: ");
                     int osoo = int.Parse(Console.ReadLine());
-                    int[] ks = program.findAll(ref oao, osoo);
+                    int[] ks = program.findAll(oao, osoo);
                     for(int i = 0; i < ks.Length; i++){
                         Console.Write(ks[i] + " ");
                     }
@@ -337,7 +337,7 @@ class Program{
             Console.WriteLine();
         }
     }
-    public int findFirst (ref int[] arr, int x){
+    public int findFirst (int[] arr, int x){
         for(int i = 0; i < arr.Length; i++){
             if(arr[i] == x){
                 return i;
@@ -345,7 +345,7 @@ class Program{
         }
         return -1;
     }
-    public int maxAbs (ref int[] arr){
+    public int maxAbs (int[] arr){
         int x = -999999;
         for(int i = 0; i < arr.Length; i++){
             if(arr[i] < 0){
@@ -356,7 +356,7 @@ class Program{
         }
         return x;
     }
-    public int[] add (ref int[] arr, ref int[] ins, int pos){
+    public int[] add (int[] arr, int[] ins, int pos){
         int one = arr.Length;
         int two = ins.Length;
         int[] result = new int[one + two];
@@ -372,7 +372,7 @@ class Program{
         }
         return result;
     }
-    public int[] reverseBack (ref int[] arr){
+    public int[] reverseBack (int[] arr){
         int[] rev = new int[arr.Length];
         for (int i = 0; i < arr.Length; i++)
         {
@@ -381,7 +381,7 @@ class Program{
         return rev;
     }
 
-     public int[] findAll (ref int[] arr, int x){
+     public int[] findAll (int[] arr, int x){
         int count = 0;
         foreach (int value in arr) {
             if (value == x) {
