@@ -1,6 +1,6 @@
 public class extendslogic : logic{
-    private bool _k;
-    private bool _z;
+    private bool _k{get; set;}
+    private bool _z{get; set;}
     public extendslogic(bool x, bool y, bool k, bool z)
         : base(x, y) 
     {
