@@ -21,6 +21,6 @@ public class extendslogic : logic{
     }
     public override string ToString()
     {
-        return $"Первое поле {getx()}, второе поле {gety()}, третье поле {_k}, четвертое поле {_z}";
+        return $"Первое поле {_x}, второе поле {_y}, третье поле {_k}, четвертое поле {_z}";
     }
 }
