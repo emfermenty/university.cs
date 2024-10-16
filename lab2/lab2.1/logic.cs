@@ -1,8 +1,8 @@
 using System;
 
 public class logic{
-    private bool _x;
-    private bool _y;
+    protected bool _x{get; set;}
+    protected bool _y{get; set;}
     public logic(bool x, bool y){
         this._x = x;
         this._y = y;
@@ -12,12 +12,6 @@ public class logic{
         this._y = l._y;
     }
     
-    public bool getx(){
-        return _x;
-    }
-    public bool gety(){
-        return _y;
-    }
     public bool implication(){
         return !_x || _y;
     }
