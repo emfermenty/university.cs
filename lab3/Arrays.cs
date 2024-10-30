@@ -5,35 +5,12 @@ class Array<T>{
     public T[,] getarr(){
         return arr;
     }
+    //3 задание
     public Array(int n, int m){
+        this.arr = new T[n,m];
+    }
+    public Array(int n, int m, char o){
         arr = new T[n, m];
-        //firstarr(n, m);
-    }
-    public Array(int n){
-        arr = new T[n,n]; 
-        secondarr(n, n);
-    }
-    public Array(int n, int m, int x){
-            arr = new T[n,m];
-            thirdarr(n,m, x);
-    }
-    //задание 2
-    public Array(){
-        Console.WriteLine("Введите количество депутатов");
-        int k = int.Parse(Console.ReadLine());
-        arr = new T[k, 2];
-        for(int i = 0; i < k; i ++){
-            for(int j = 0; j < 2; j++){
-                Console.WriteLine($"Введите значения true или false для депутата {i+1} и выбора {j+1}");
-                arr[i, j] = (T)Convert.ChangeType(bool.Parse(Console.ReadLine()), typeof(T));
-
-            }
-        }PrintArray(arr, k, 2);
-            task2(arr, k);
-    }
-    //Задание 1.1
-    public void firstarr(int n, int m)
-    {
         for (int startRow = n - 1, startCol = 0; startCol < n; )
         {
             int row = startRow;
@@ -54,29 +31,27 @@ class Array<T>{
                 startCol++; 
             }
         }
-        PrintArray(arr,n,m);
     }
-    // задание 1.2
-    public void secondarr(int n, int m){
+    public Array(int n){
+        arr = new T[n,n]; 
         Random random = new Random();
         for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
+            for(int j = 0; j < n; j++){
                 if(j == 0){
                     arr[i, j] = (T)Convert.ChangeType(random.Next(1, 10), typeof(T));
                 } else
                 arr[i, j] = (T)Convert.ChangeType((dynamic)arr[i, j - 1] - random.Next(1, 10), typeof(T));
             }
         }
-        PrintArray(arr, n, m);
     }
-    // задание 1.3
-    public void thirdarr(int n, int m, int startValue)
-{
+    public Array(int n, int m, int x){
+        arr = new T[n,m];
+        //thirdarr(n,m, x);
     int rowStart = 0;
     int rowEnd = n - 1;
     int colStart = 0;
     int colEnd = m - 1;
-    int x = startValue; // Начинаем с заданного значения
+    //int x = startValue; // Начинаем с заданного значения
 
     while (rowStart <= rowEnd && colStart <= colEnd)
     {
@@ -114,9 +89,22 @@ class Array<T>{
             rowStart++;
         }
     }
-
-    PrintArray(arr, n, m);
 }
+    //задание 2
+    public Array(){
+        Console.WriteLine("Введите количество депутатов");
+        int k = int.Parse(Console.ReadLine());
+        arr = new T[k, 2];
+        for(int i = 0; i < k; i ++){
+            for(int j = 0; j < 2; j++){
+                Console.WriteLine($"Введите значения true или false для депутата {i+1} и выбора {j+1}");
+                arr[i, j] = (T)Convert.ChangeType(bool.Parse(Console.ReadLine()), typeof(T));
+
+            }
+        }PrintArray();
+            task2(arr, k);
+    }
+    
     //задание 2
     public void task2(T[,] arr, int k){
         int yes = 0;
@@ -132,13 +120,16 @@ class Array<T>{
     }
     // задание 3
     // вычитание
+    //private void newar()
+    //{
+    //    arr = new T[n, m];
+    //}
     public static Array<T> operator -(Array<T> a, Array<T> b)
     {
         if (a.arr.GetLength(0) != b.arr.GetLength(0) || a.arr.GetLength(1) != b.arr.GetLength(1))
         {
             throw new InvalidOperationException("Matrices must have the same dimensions for subtraction.");
         }
-
         Array<T> result = new Array<T>(a.arr.GetLength(0), a.arr.GetLength(1));
         for (int i = 0; i < a.arr.GetLength(0); i++)
         {
@@ -156,9 +147,8 @@ class Array<T>{
     {
         if (a.arr.GetLength(0) != b.arr.GetLength(0) || a.arr.GetLength(1) != b.arr.GetLength(1))
         {
-            throw new InvalidOperationException("Matrices must have the same dimensions for subtraction.");
+            throw new InvalidOperationException("длина матриц разнится");
         }
-
         Array<T> result = new Array<T>(a.arr.GetLength(0), a.arr.GetLength(1));
         for (int i = 0; i < a.arr.GetLength(0); i++)
         {
@@ -188,23 +178,24 @@ class Array<T>{
         return result;
     }
     //транспонирование матрицы
-    public T[,] Transpose()
+    public void Transpose()
     {
         int rows = arr.GetLength(0);
         int cols = arr.GetLength(1);
+        //int[,] aw = new int[rows, cols];
         T[,] transposed = new T[cols, rows];
 
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
-                transposed[j, i] = arr[i, j]; // Переставляем строки и столбцы
+                transposed[j, i] = arr[i, j];
             }
         }
-    PrintArray(transposed, rows, cols);
-        return transposed;
+        arr = transposed;
+        //return transposed;
     }
-    // перегрузка toString
+
     public override string ToString()
     {
         var result = "";
@@ -219,12 +210,14 @@ class Array<T>{
         return result;
     }
     //вывод массива
-    private void PrintArray(T[,] array, int n,  int m){
-    for (int i = 0; i < n; i++)
+    public void PrintArray(){
+    int nn = arr.GetLength(0);
+    int mm = arr.GetLength(1);
+    for (int i = 0; i < nn; i++)
         {
-            for (int j = 0; j < m; j++)
+            for (int j = 0; j < mm; j++)
             {
-                Console.Write(array[i, j] + "\t");
+                Console.Write(arr[i, j] + "\t");
             }
             Console.WriteLine();
         }
