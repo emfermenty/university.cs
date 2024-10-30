@@ -11,8 +11,8 @@ class Program{
         Console.Write("И столбцов: ");
         int m = int.Parse(Console.ReadLine());
         Console.WriteLine("Вывод первого задания: ");
-        a = new Array<int>(n,m);
-        a.firstarr(n,m);
+        a = new Array<int>(n,m, 'o');
+        a.PrintArray();
         s = false;
         } catch {
             Console.WriteLine("неверные данные");
@@ -26,6 +26,7 @@ class Program{
             int nn = int.Parse(Console.ReadLine());
             Console.WriteLine("Вывод второго задания: ");
             b = new Array<int>(nn);
+            b.PrintArray();
             s = false;
             } catch{
                 Console.WriteLine("неверные данные");
@@ -40,6 +41,7 @@ class Program{
                 Console.WriteLine("Выведте значение x: ");
                 int x = int.Parse(Console.ReadLine());
                 c = new Array<int>(nnn, nnnn, x);
+                c.PrintArray();
                 s = false;
             } catch{
                 Console.WriteLine("Неверные данные");
@@ -52,11 +54,13 @@ class Program{
             s = false;
         }
         //задание 3
-        Console.WriteLine("Транспонировка ");
         a.Transpose();
-        
-        Array<int> d = null;
-        d = a + b - (c * 3);
-        Console.WriteLine(d.ToString());
+        //a.PrintArray();
+        a += b - (c*3);
+        //c = c*3;
+        //a -= c;
+        //a + b - (c * 3);
+        Console.WriteLine("результат");
+        Console.WriteLine(a.ToString());
     }
 }
