@@ -1,4 +1,6 @@
-﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.ComponentModel.Design;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -7,14 +9,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        ILogger logger = new Logger();
-        IDatabase database = new PostgresDataBase(logger);
-        IMessageService emailService = new EmailService(logger, database);
-        NotificationService notificationService = new NotificationService(emailService);
-        IMessageService telegramService = new TelegramService();
-        NotificationService notification = new NotificationService(telegramService);
+        IServiceCollection services = new ServiceCollection();
+
+        services.AddTransient<NotificationService>();
+        services.AddTransient<IMessageService, EmailService>();
+        services.AddTransient<ILogger, Logger>();
+        services.AddTransient<IDatabase, PostgresDataBase>();
+
+        var serviceProvider = services.BuildServiceProvider();
+
+        var notificationService = serviceProvider.GetRequiredService<NotificationService>();
         notificationService.Notify();
-        notification.Notify();
         Console.ReadKey();
     } 
 }
